@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>遮阳蓬</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="./css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="./js/main.js"></script>
+<script type="text/javascript" src="./js/cgimethod.js"></script>
+<script type="text/javascript" src="./js/jquery-1.4.2.js"></script>
+
+<script type="text/javascript" src="./js/jquery.timers.js"></script>
+
+
+<link rel="stylesheet" href="./css/jquery.ui.all.css" />
+<link rel="stylesheet" href="./css/demos.css" />
+
+<script src="./js/jquery-1.4.4.js"></script>
+<script src="./js/ui/jquery.ui.core.js"></script>
+<script src="./js/ui/jquery.ui.widget.js"></script>
+<script src="./js/ui/jquery.ui.mouse.js"></script>
+<script src="./js/ui/jquery.ui.slider.js"></script>
+
+<script>
+
+var currValue = 150;
+var minValue = 100;
+var maxValue = 200;
+
+function sliderInit(){
+	currValue = 150;
+	sliderChange(currValue, minValue, maxValue, awningChange);
+}
+
+</script>
+</head>
+<body class="set_body" onload="sliderInit()">
+
+<div id="mainDiv">
+
+<table class="main_table" id="tableId" align="center" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+	<table class="second_table" id="scdTable" align="center" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<td><img src="./images/set/set_21.gif" alt="" onclick="beforePage()"/></td>
+			<td><img src="./images/set/head_07.gif" alt=""/></td>
+			<td><img src="./images/set/set_22.gif" alt="" onclick="nextPage()"/></td>
+		</tr>
+		<tr>
+			<td colspan="2" rowspan="2" style="background-image:url(./images/set/left_07.gif)">
+				<table style="" align="center" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td rowspan="3" width="200px">&nbsp;</td>
+						<td rowspan="3"><!--<label for="amount">Volume:</label>
+				<input type="hidden" id="amount" style="border:0; color:#f6931f; font-weight:bold;" />-->
+				<div id="slider-vertical" style="height:200px;width:25px;"></div></td>
+						<td width="100px">&nbsp;</td>
+						<td height="80" width="80"><img src="./images/set/set_11.gif" alt="" onmouseup="sliderStop(this,'images/set/set_11.gif')" onmousedown="sliderUp(this,'11','set/set', awningChange)" /></td>
+					</tr>
+					<tr>
+						<td width="100px">&nbsp;</td>
+						<td height="80" width="80"><img src="./images/set/set_12.gif" alt="" onmouseup="sliderStop(this,'images/set/set_12.gif')" onmousedown="sliderStatus(this,'12','set/set', awningChange, awningStop)" /></td>
+					</tr>
+					<tr>
+						<td width="100px">&nbsp;</td>
+						<td height="80" width="80"><img src="./images/set/set_13.gif" alt="" onmouseup="sliderStop(this,'images/set/set_13.gif')" onmousedown="sliderDn(this,'13','set/set', awningChange)" /></td>
+					</tr>
+				</table>
+			</td>
+			<td><img src="./images/set/set_06.gif" alt="" onclick="hrefURL('index.html')"/></td>
+		</tr>
+		<tr>
+			<td><img src="./images/set/set_07.gif" alt="" onclick="hrefURL('models.html?curr=models')"/></td>
+		</tr>
+		<tr>
+			<td colspan="3">
+			<img src="./images/main_11.gif" alt="" />
+			</td>
+		</tr>
+	</table>
+		</td>
+	</tr>
+</table>
+
+</div>
+</body>
+
+</html>
