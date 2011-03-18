@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="pragma" content="no-cache" />
+<title>LED灯开关控制</title>
+<style type="text/css">
+.main {
+	text-align:center;
+}
+.main input{
+	width:80px;
+	height:30px;
+	font-size:20px;
+}
+}
+</style>
+<script type="text/javascript" src="/js/jquery-1.4.2.js"></script>
+<script type='text/javascript'>
+function ledOn()
+{	
+	$.ajax({
+		type:'GET',
+		datatype:'html',
+		cache:false,
+		async: false,
+		url:'../smartHome',
+		data:'action=1&state=1',
+		timeout: 2000, 
+		success:
+			function(msg)
+			{
+			if($.trim(msg) == "1"){	
+				$("#btnOn").attr("disabled","disabled");
+				$("#btnOff").removeAttr("disabled");
+			}},
+		});
+};
+
+function ledOff()
+{	
+	$.ajax({
+		type:'GET',
+		datatype:'html',
+		cache:false,
+		async: false,
+		url:'../smartHome',
+		data:'action=1&state=0',
+		timeout: 2000, 
+		success:
+			function(msg)
+			{
+			if($.trim(msg) == "1"){
+				$("#btnOff").attr("disabled", "disabled");
+				$("#btnOn").removeAttr("disabled");
+			}},
+		});	
+};
+
+</script>
+</head>
+<body>
+<div class="main" id="main">
+<h2>LED灯开关控制</h2>
+<input name="on" type="button" value="开"  onclick="ledOn()" id="btnOn"/>
+&nbsp;
+<input name="off" type="button" value="关"  onclick="ledOff()" id="btnOff"/>
+</div>
+</body>
+</html>
