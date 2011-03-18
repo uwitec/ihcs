@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>实时温度显示</title>
+<style type="text/css">
+.main {
+	text-align:center;
+}
+.main table{
+	font-size:20px;
+}
+}
+</style>
+<script type="text/javascript" src="/js/jquery-1.4.2.js"></script>
+<script type='text/javascript'>
+getTemperature();
+window.setInterval("getTemperature()", 1000);
+function getTemperature()
+{
+	$.ajax({
+		type:'GET',
+		datatype:'html',
+		cache:false,
+		async: false,
+		url:'../smartHome',
+		data:'action=2',
+		timeout: 2000, 
+		success:
+			function(msg)
+			{
+				msg = $.trim(msg);
+				if(msg != ""){
+					var _temper = msg + "&nbsp;&deg;C";
+					$("#temper").html(_temper);
+				}
+			},
+		});	
+}
+</script>
+</head>
+<div class="main">
+<h2>实时温度显示</h2>
+<table border="0" align="center">
+  <tr>
+    <td width="100">当前温度：</td>
+    <td width="80"><div id="temper"></div></td>
+  </tr>
+</table>
+</div>
+</html>
