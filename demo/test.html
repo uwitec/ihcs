@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="pragma" content="no-cache" />
+<title>压力测试</title>
+<style type="text/css">
+.main {
+	text-align:left;
+}
+.main table{
+	font-size:20px;
+}
+.btn{
+	width:80px;
+	height:30px;
+	font-size:20px;
+}
+}
+</style>
+<script type="text/javascript" src="/js/jquery-1.4.2.js"></script>
+<script type='text/javascript'>
+
+var G_SendMsgTimer;
+var G_counter = 0;
+
+function Start()
+{	
+	var timeVal = $("#time").val();
+	var paramVal = $("#param").val();
+	$("#btnStart").attr("disabled", "disabled");
+	$("#btnStop").removeAttr("disabled");
+	G_SendMsgTimer = window.setInterval(function(){SendMsg(paramVal);}, timeVal);
+};
+
+function Stop()
+{	
+	G_counter = 0;
+	$("#btnStop").attr("disabled", "disabled");
+	$("#btnStart").removeAttr("disabled");
+	window.clearInterval(G_SendMsgTimer);
+}
+
+function SendMsg(cmd)
+{
+	G_counter++;
+	$("#counter_id").html(G_counter);
+	$.ajax({
+		type:'GET',
+		datatype:'html',
+		cache:false,
+		async: false,
+		url:'/smartHome',
+		data:cmd,
+		timeout: 2000, 
+		success:
+			function(msg)
+			{
+				$("#ret").html(msg);
+			},
+		error:
+			function()
+			{
+				$("#ret").html("error");
+			} 
+		});
+};
+
+</script>
+</head>
+<div class="main">
+<h2 align="center">压力测试</h2>
+<table border="0" align="center">
+	<tr>
+  	<td width="50">间隔:</td>
+    <td width="300"><input type="text" id="time" value="1000" size="10">ms</td>
+  </tr>
+  <tr>
+  	<td width="50">参数:</td>
+    <td width="300"><input type="text" id="param" value="action=202&amp;shortAddr=1&amp;cmd=101" size="50"></td>
+  </tr>
+  <tr>
+  	<td width="50">返回:</td>
+    <td width="300"><div id="ret"></div></td>
+  </tr>
+   <tr>
+  	<td width="50"><div id="counter_id"></div></td>
+    <td width="300">
+      <input name="on" type="button" value="开始"  onclick="Start()" id="btnStart" class="btn"/>
+      <input name="off" type="button" value="停止"  onclick="Stop()" id="btnStop" class="btn"/></td>
+  </tr>
+</table>
+</div>
+</html>
