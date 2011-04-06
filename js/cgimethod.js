@@ -1,4 +1,4 @@
-function daylightMethod(){
+﻿function daylightMethod(){
 
 	cgiCallback('GET',
 		'/smartHome',
