@@ -7,19 +7,18 @@
 
 .main_table{
 	cursor:pointer;
-	width:640px;
-	height:480px;
-	background:url(../images/bg_img.png);
+	width:100%;
+	background:url(../images/bg_img.png) ;
 	background-repeat: repeat-x;
 }
 
 .second_table{
-	width:619px;
+	width:96.8%;
 	height:auto;
 }
 
 .second_table img{
-	border:0;
+	border:0;no-repeat
 }
 
 .set_body{

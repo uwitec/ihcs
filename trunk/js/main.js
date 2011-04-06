@@ -1,4 +1,4 @@
-var pageMap = new Object();
+﻿var pageMap = new Object();
 pageMap['light'] = "lighting.html?curr=light";
 pageMap['stereo'] = "stereo.html?curr=stereo";
 pageMap['projector'] = "projector.html?curr=projector";
