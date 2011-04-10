@@ -42,17 +42,28 @@ function sliderInit(){
 		<td>
 	<table class="second_table" id="scdTable" align="center" border="0" cellpadding="0" cellspacing="0">
 		<tr>
-			<td><img src="./images/set/set_21.gif" alt="" onclick="beforePage()"/></td>
-			<td><img src="./images/set/head_02.gif" alt=""/></td>
-			<td><img src="./images/set/set_22.gif" alt="" onclick="nextPage()"/></td>
+			<td><img src="./images/set/set_21.gif" width="100%" alt="" onclick="beforePage()"/></td>
+			<td><img src="./images/set/head_02.gif" width="100%" alt=""/></td>
+			<td><img src="./images/set/set_22.gif" width="100%" alt="" onclick="nextPage()"/></td>
 		</tr>
 		<tr>
-			<td colspan="2" rowspan="2" style="background-image:url(./images/set/left_02.gif)">
-				<table style="" align="center" border="0" cellpadding="0" cellspacing="0">
+			<td colspan="2" rowspan="2" style="background-image:url(./images/set/set_bg.gif);">
+				<table class="third_table" border="0" cellpadding="0" cellspacing="0">
 					<tr>
+						<td>&nbsp;</td>
+						<td width="25%"><img src="./images/set/left_icon_02.png" width="100%" alt="" /></td>
+						<td width="15%">&nbsp;</td>
+						<td width="6%"><div id="slider-vertical" style="width:100%;height:100%"><img src="./images/set/test.png" width="100%" alt="" /></div></td>
+						<td width="12%">&nbsp;</td>
+						<td width="15%" align="center"><img src="./images/set/set_11.gif" width="100%" alt="" onmouseup="sliderStop(this,'images/set/set_11.gif')" onmousedown="sliderUp(this,'11','set/set', stereoChange)" /><br/><br />
+						<img src="./images/set/set_12.gif" width="100%" alt="" onmouseup="sliderStop(this,'images/set/set_12.gif')" onmousedown="sliderStatus(this,'12','set/set', stereoChange, stereoStop)" /><br /><br />
+						<img src="./images/set/set_13.gif" width="100%" alt="" onmouseup="sliderStop(this,'images/set/set_13.gif')" onmousedown="sliderDn(this,'13','set/set', stereoChange)" />
+						</td>
+						<td width="15%">&nbsp;</td>
+					</tr>
+				<!--	<tr>
 						<td rowspan="3" width="200px">&nbsp;</td>
-						<td rowspan="3"><!--<label for="amount">Volume:</label>
-				<input type="hidden" id="amount" style="border:0; color:#f6931f; font-weight:bold;" />-->
+						<td rowspan="3">
 				<div id="slider-vertical" style="height:200px;width:25px;"></div></td>
 						<td width="100px">&nbsp;</td>
 						<td height="80" width="80"><img src="./images/set/set_11.gif" alt="" onmouseup="sliderStop(this,'images/set/set_11.gif')" onmousedown="sliderUp(this,'11','set/set', stereoChange)" /></td>
@@ -64,17 +75,17 @@ function sliderInit(){
 					<tr>
 						<td width="100px">&nbsp;</td>
 						<td height="80" width="80"><img src="./images/set/set_13.gif" alt="" onmouseup="sliderStop(this,'images/set/set_13.gif')" onmousedown="sliderDn(this,'13','set/set', stereoChange)" /></td>
-					</tr>
+					</tr>-->
 				</table>
 			</td>
-			<td><img src="./images/set/set_06.gif" alt="" onclick="hrefURL('index.html')"/></td>
+			<td><img src="./images/set/set_06.gif" width="100%" alt="" onclick="hrefURL('index.html')"/></td>
 		</tr>
 		<tr>
-			<td><img src="./images/set/set_07.gif" alt="" onclick="hrefURL('models.html?curr=models')"/></td>
+			<td><img src="./images/set/set_07.gif" width="100%" alt="" onclick="hrefURL('models.html?curr=models')"/></td>
 		</tr>
 		<tr>
 			<td colspan="3">
-			<img src="./images/main_11.gif" alt="" />
+			<img src="./images/main_11.gif" width="100%" alt="" />
 			</td>
 		</tr>
 	</table>
