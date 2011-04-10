@@ -1,4 +1,4 @@
-﻿@charset "utf-8";
+@charset "utf-8";
 /* CSS Document */ 
 
 .imgclick img:active{
@@ -16,6 +16,7 @@
 .second_table{
 	width:96.8%;
 	height:100%;
+	margin:auto;
 }
 
 .second_table img{
