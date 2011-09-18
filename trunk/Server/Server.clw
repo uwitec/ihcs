@@ -47,5 +47,7 @@ Control4=IDOK,button,1342373889
 [DLG:IDD_SERVER_DIALOG]
 Type=1
 Class=CServerDlg
-ControlCount=0
+ControlCount=2
+Control1=IDC_STATIC,static,1342308352
+Control2=IDC_EDIT1,edit,1350631552
 
