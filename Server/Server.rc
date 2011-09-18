@@ -84,12 +84,14 @@ BEGIN
     DEFPUSHBUTTON   "确定",IDOK,178,7,50,14,WS_GROUP
 END
 
-IDD_SERVER_DIALOG DIALOGEX 0, 0, 320, 200
+IDD_SERVER_DIALOG DIALOGEX 0, 0, 394, 269
 STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
 EXSTYLE WS_EX_APPWINDOW
 CAPTION "服务器端"
 FONT 9, "宋体"
 BEGIN
+    LTEXT           "服务器监听端口:",IDC_STATIC,249,23,70,9
+    EDITTEXT        IDC_EDIT1,319,21,40,14,ES_AUTOHSCROLL
 END
 
 
@@ -114,8 +116,9 @@ VS_VERSION_INFO VERSIONINFO
 BEGIN
     BLOCK "StringFileInfo"
     BEGIN
-        BLOCK "080404B0"
+        BLOCK "080404b0"
         BEGIN
+            VALUE "Comments", "\0"
             VALUE "CompanyName", "\0"
             VALUE "FileDescription", "Server Microsoft 基础类应用程序\0"
             VALUE "FileVersion", "1, 0, 0, 1\0"
@@ -123,8 +126,10 @@ BEGIN
             VALUE "LegalCopyright", "版权所有 (C) 2011\0"
             VALUE "LegalTrademarks", "\0"
             VALUE "OriginalFilename", "Server.EXE\0"
+            VALUE "PrivateBuild", "\0"
             VALUE "ProductName", "Server 应用程序\0"
             VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "SpecialBuild", "\0"
         END
     END
     BLOCK "VarFileInfo"
@@ -155,9 +160,9 @@ BEGIN
     IDD_SERVER_DIALOG, DIALOG
     BEGIN
         LEFTMARGIN, 7
-        RIGHTMARGIN, 313
+        RIGHTMARGIN, 387
         TOPMARGIN, 7
-        BOTTOMMARGIN, 193
+        BOTTOMMARGIN, 262
     END
 END
 #endif    // APSTUDIO_INVOKED
