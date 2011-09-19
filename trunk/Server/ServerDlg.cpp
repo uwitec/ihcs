@@ -63,7 +63,8 @@ CServerDlg::CServerDlg(CWnd* pParent /*=NULL*/)
 	: CDialog(CServerDlg::IDD, pParent)
 {
 	//{{AFX_DATA_INIT(CServerDlg)
-		// NOTE: the ClassWizard will add member initialization here
+	m_txtSendMsg = _T("");
+	m_txtServerPort = _T("");
 	//}}AFX_DATA_INIT
 	// Note that LoadIcon does not require a subsequent DestroyIcon in Win32
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
@@ -73,7 +74,9 @@ void CServerDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
 	//{{AFX_DATA_MAP(CServerDlg)
-		// NOTE: the ClassWizard will add DDX and DDV calls here
+	DDX_Control(pDX, IDC_LIST, m_list);
+	DDX_Text(pDX, IDC_EDIT_SendMsg, m_txtSendMsg);
+	DDX_Text(pDX, IDC_EDIT_ServerPort, m_txtServerPort);
 	//}}AFX_DATA_MAP
 }
 
@@ -116,6 +119,19 @@ BOOL CServerDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 	
 	// TODO: Add extra initialization here
+	//初始化CList控件和header
+	m_list.InsertColumn(0,"IP地址");
+	m_list.InsertColumn(1,"端口号");
+
+	//设置header的宽度
+	RECT rectList;
+	m_list.GetWindowRect(&rectList);
+	int width=rectList.right-rectList.left-2;
+	for(int i=0;i<2;i++)
+	{
+		m_list.SetColumnWidth(i,width/2);
+//		m_list.SetExtendedStyle(LVS_EX_FULLROWSELECT);
+	}
 	
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
