@@ -85,7 +85,9 @@ BEGIN_MESSAGE_MAP(CServerDlg, CDialog)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_BN_CLICKED(IDC_BUTTON_SEND, OnButtonSend)
 	//}}AFX_MSG_MAP
+	ON_MESSAGE(WM_RECVDATA,OnRecvData)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -132,7 +134,17 @@ BOOL CServerDlg::OnInitDialog()
 		m_list.SetColumnWidth(i,width/2);
 //		m_list.SetExtendedStyle(LVS_EX_FULLROWSELECT);
 	}
-//	this->m_txtSendMsg
+	InitSocket();
+
+	RECVPARAM *pRecvParam=new RECVPARAM;
+	pRecvParam->sock=m_socket;
+	pRecvParam->hwnd=m_hWnd;
+
+	//创建接收线程
+	HANDLE hThread=CreateThread(NULL,0,RecvProc,(LPVOID)pRecvParam,0,NULL);
+
+	//关闭该接收句柄，释放其引用参数
+	CloseHandle(hThread);
 	
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
@@ -184,4 +196,95 @@ void CServerDlg::OnPaint()
 HCURSOR CServerDlg::OnQueryDragIcon()
 {
 	return (HCURSOR) m_hIcon;
+}
+
+BOOL CServerDlg::InitSocket()
+{
+	//创建套接字
+	m_socket=socket(AF_INET,SOCK_DGRAM,0);
+	if(INVALID_SOCKET==m_socket)
+	{
+		MessageBox("套接字创建失败！");
+		return FALSE;
+	}
+	SOCKADDR_IN addrSock;
+	addrSock.sin_family=AF_INET;
+	addrSock.sin_port=htons(atoi(m_txtServerPort));
+	addrSock.sin_addr.S_un.S_addr=htonl(INADDR_ANY);
+
+	int retval;
+	//绑定套接字
+	retval=bind(m_socket,(SOCKADDR*)&addrSock,sizeof(SOCKADDR));
+	if(SOCKET_ERROR==retval)
+	{
+		closesocket(m_socket);
+		MessageBox("绑定失败！");
+		return FALSE;
+	}
+	return TRUE;
+}
+
+DWORD WINAPI CServerDlg::RecvProc(LPVOID lpParameter)
+{
+	//获取主线程传递的套接字和窗口句柄
+	SOCKET sock=((RECVPARAM*)lpParameter)->sock;
+	HWND hwnd=((RECVPARAM*)lpParameter)->hwnd;
+	delete lpParameter;
+
+	SOCKADDR_IN addrFrom;
+	int len=sizeof(SOCKADDR);
+
+	char recvBuf[200];
+	char tempBuf[300];
+	int retval;
+
+	while(TRUE)
+	{
+		//接收数据
+		retval=recvfrom(sock,recvBuf,200,0,(SOCKADDR*)&addrFrom,&len);
+		if(SOCKET_ERROR==retval)
+			break;
+		sprintf(tempBuf,"%s说：%s",inet_ntoa(addrFrom.sin_addr),recvBuf);
+		::PostMessage(hwnd,WM_RECVDATA,0,(LPARAM)tempBuf);
+	}
+	return 0;
+
+}
+
+void CServerDlg::OnRecvData(WPARAM wParam,LPARAM lParam)
+{
+	//取出接收到的数据
+	CString str=(char *)lParam;
+	CString strTemp;
+
+	//获得已有的数据
+	GetDlgItemText(IDC_EDIT_RecvMsg,strTemp);
+	str+="\r\n";
+	str=strTemp;
+
+	//显示所有接收到的数据
+	SetDlgItemText(IDC_EDIT_RecvMsg,str);
+}
+
+void CServerDlg::OnButtonSend() 
+{
+	// TODO: Add your control notification handler code here
+	//获得对方IP
+	DWORD dwIP;
+	((CIPAddressCtrl*)GetDlgItem(IDC_IPADDRESS1))->GetAddress(dwIP);
+
+	SOCKADDR_IN addrTo;
+	addrTo.sin_family=AF_INET;
+	addrTo.sin_port=htons(atoi(m_txtServerPort));
+	addrTo.sin_addr.S_un.S_addr=htonl(dwIP);
+
+	CString strSend;
+
+	//获得待发数据
+	GetDlgItemText(IDC_EDIT_SendMsg,strSend);
+
+	//发送数据
+	sendto(m_socket,strSend,strSend.GetLength()+1,0,(SOCKADDR*)&addrTo,sizeof(SOCKADDR));
+	//清空发送编辑框中的内容
+	SetDlgItemText(IDC_EDIT_SendMsg,"");
 }
