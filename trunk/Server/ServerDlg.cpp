@@ -132,6 +132,7 @@ BOOL CServerDlg::OnInitDialog()
 		m_list.SetColumnWidth(i,width/2);
 //		m_list.SetExtendedStyle(LVS_EX_FULLROWSELECT);
 	}
+//	this->m_txtSendMsg
 	
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }

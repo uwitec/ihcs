@@ -92,7 +92,7 @@ FONT 9, "宋体"
 BEGIN
     LTEXT           "服务器监听端口:",IDC_STATIC,207,20,61,12
     EDITTEXT        IDC_EDIT_ServerPort,275,17,40,14,ES_AUTOHSCROLL
-    CONTROL         "List1",IDC_LIST,"SysListView32",LVS_LIST | WS_BORDER | 
+    CONTROL         "List1",IDC_LIST,"SysListView32",LVS_REPORT | WS_BORDER | 
                     WS_TABSTOP,23,54,164,169
     GROUPBOX        "在线的GPRS客户端",IDC_STATIC,17,39,178,196
     EDITTEXT        IDC_EDIT_SendMsg,212,52,113,142,ES_AUTOHSCROLL
