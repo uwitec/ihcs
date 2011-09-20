@@ -30,7 +30,7 @@ ImplementationFile=ServerDlg.cpp
 Filter=D
 BaseClass=CDialog
 VirtualFilter=dWC
-LastObject=CServerDlg
+LastObject=IDC_EDIT_ServerPort
 
 [CLS:CAboutDlg]
 Type=0
@@ -53,7 +53,7 @@ Class=CServerDlg
 ControlCount=7
 Control1=IDC_STATIC,static,1342308352
 Control2=IDC_EDIT_ServerPort,edit,1350631552
-Control3=IDC_LIST,SysListView32,1350631427
+Control3=IDC_LIST,SysListView32,1350631425
 Control4=IDC_STATIC,button,1342177287
 Control5=IDC_EDIT_SendMsg,edit,1350631552
 Control6=IDC_BUTTON_SEND,button,1342242816
