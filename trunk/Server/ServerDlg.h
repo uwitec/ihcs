@@ -8,6 +8,8 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
+#define WM_RECVDATA     WM_USER+1
+
 /////////////////////////////////////////////////////////////////////////////
 // CServerDlg dialog
 
@@ -15,6 +17,9 @@ class CServerDlg : public CDialog
 {
 // Construction
 public:
+//	void OnRecvData(WPARAM wParam,LPARAM lParam);
+	static DWORD WINAPI RecvProc(LPVOID lpParameter);
+	BOOL InitSocket();
 	CServerDlg(CWnd* pParent = NULL);	// standard constructor
 
 // Dialog Data
@@ -38,12 +43,21 @@ protected:
 	// Generated message map functions
 	//{{AFX_MSG(CServerDlg)
 	virtual BOOL OnInitDialog();
-//	BOOL OnInitDialog();
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
+	afx_msg void OnButtonSend();
 	//}}AFX_MSG
+	afx_msg void OnRecvData(WPARAM wParam,LPARAM lParam);
 	DECLARE_MESSAGE_MAP()
+private:
+	SOCKET m_socket;
+};
+
+struct RECVPARAM
+{
+	SOCKET sock;    //已创建的套接字
+	HWND hwnd;      //对话窗句柄
 };
 
 //{{AFX_INSERT_LOCATION}}
