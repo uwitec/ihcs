@@ -209,7 +209,8 @@ BOOL CServerDlg::InitSocket()
 	}
 	SOCKADDR_IN addrSock;
 	addrSock.sin_family=AF_INET;
-	addrSock.sin_port=htons(atoi(m_txtServerPort));
+//	addrSock.sin_port=htons(atoi(m_txtServerPort));  
+	addrSock.sin_port=htons(6000);
 	addrSock.sin_addr.S_un.S_addr=htonl(INADDR_ANY);
 
 	int retval;
@@ -260,7 +261,7 @@ void CServerDlg::OnRecvData(WPARAM wParam,LPARAM lParam)
 	//获得已有的数据
 	GetDlgItemText(IDC_EDIT_RecvMsg,strTemp);
 	str+="\r\n";
-	str=strTemp;
+	str+=strTemp;
 
 	//显示所有接收到的数据
 	SetDlgItemText(IDC_EDIT_RecvMsg,str);
@@ -275,7 +276,8 @@ void CServerDlg::OnButtonSend()
 
 	SOCKADDR_IN addrTo;
 	addrTo.sin_family=AF_INET;
-	addrTo.sin_port=htons(atoi(m_txtServerPort));
+//	addrTo.sin_port=htons(atoi(m_txtServerPort));
+	addrTo.sin_port=htons(6000);
 	addrTo.sin_addr.S_un.S_addr=htonl(dwIP);
 
 	CString strSend;
@@ -286,5 +288,5 @@ void CServerDlg::OnButtonSend()
 	//发送数据
 	sendto(m_socket,strSend,strSend.GetLength()+1,0,(SOCKADDR*)&addrTo,sizeof(SOCKADDR));
 	//清空发送编辑框中的内容
-	SetDlgItemText(IDC_EDIT_SendMsg,"");
+	SetDlgItemText(IDC_EDIT_SendMsg," ");
 }
