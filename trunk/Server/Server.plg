@@ -6,17 +6,32 @@
 --------------------Configuration: Server - Win32 Debug--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP45.tmp" with contents
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP6A.tmp" with contents
 [
-/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/Server.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/Server.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\code\Server\Server.cpp"
 "E:\code\Server\ServerDlg.cpp"
 ]
-Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP45.tmp" 
-Creating command line "link.exe /nologo /subsystem:windows /incremental:yes /pdb:"Debug/Server.pdb" /debug /machine:I386 /out:"Debug/Server.exe" /pdbtype:sept  .\Debug\Server.obj .\Debug\ServerDlg.obj .\Debug\StdAfx.obj .\Debug\Server.res "
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP6A.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP6B.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/Server.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\code\Server\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP6B.tmp" 
 <h3>Output Window</h3>
 Compiling...
+StdAfx.cpp
+Compiling...
+Server.cpp
 ServerDlg.cpp
+Generating Code...
+Creating command line "link.exe /nologo /subsystem:windows /incremental:yes /pdb:"Debug/Server.pdb" /debug /machine:I386 /out:"Debug/Server.exe" /pdbtype:sept  .\Debug\Server.obj .\Debug\ServerDlg.obj .\Debug\StdAfx.obj .\Debug\Server.res "
+<h3>Output Window</h3>
 Linking...
+Creating command line "bscmake.exe /nologo /o"Debug/Server.bsc"  .\Debug\StdAfx.sbr .\Debug\Server.sbr .\Debug\ServerDlg.sbr"
+Creating browse info file...
+<h3>Output Window</h3>
 
 
 
